@@ -6,76 +6,69 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
-
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
-
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
     --accent: 210 40% 96.1%;
     --accent-foreground: 222.2 47.4% 11.2%;
-
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
-
     --radius: 0.5rem;
-
     --sidebar-background: 0 0% 98%;
-
     --sidebar-foreground: 240 5.3% 26.1%;
-
     --sidebar-primary: 240 5.9% 10%;
-
     --sidebar-primary-foreground: 0 0% 98%;
-
     --sidebar-accent: 240 4.8% 95.9%;
-
     --sidebar-accent-foreground: 240 5.9% 10%;
-
     --sidebar-border: 220 13% 91%;
-
     --sidebar-ring: 217.2 91.2% 59.8%;
+
+    /* VarBox custom */
+    --vb-bg: #0a0a0b;
+    --vb-surface: #111113;
+    --vb-surface2: #18181b;
+    --vb-border: #27272a;
+    --vb-border2: #3f3f46;
+    --vb-text: #fafafa;
+    --vb-text2: #a1a1aa;
+    --vb-text3: #71717a;
+    --vb-green: #22c55e;
+    --vb-green-dim: rgba(34, 197, 94, 0.12);
+    --vb-green-glow: rgba(34, 197, 94, 0.3);
+    --vb-blue: #3b82f6;
+    --vb-blue-dim: rgba(59, 130, 246, 0.12);
+    --vb-amber: #f59e0b;
+    --vb-red: #ef4444;
+    --vb-purple: #a855f7;
   }
 
   .dark {
     --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
     --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
     --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
     --primary: 210 40% 98%;
     --primary-foreground: 222.2 47.4% 11.2%;
-
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
     --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
@@ -94,8 +87,176 @@
   * {
     @apply border-border;
   }
-
   body {
     @apply bg-background text-foreground;
+    font-family: "IBM Plex Sans", sans-serif;
+    background-color: var(--vb-bg);
+    color: var(--vb-text);
   }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--vb-surface);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--vb-border2);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vb-text3);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes pulse-green {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 var(--vb-green-glow);
+  }
+  50% {
+    box-shadow: 0 0 0 6px transparent;
+  }
+}
+@keyframes grid-move {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 40px 40px;
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease both;
+}
+.animate-fade-in-scale {
+  animation: fade-in-scale 0.35s ease both;
+}
+.animate-slide-right {
+  animation: slide-in-right 0.3s ease both;
+}
+
+/* Stagger delays */
+.delay-1 {
+  animation-delay: 0.05s;
+}
+.delay-2 {
+  animation-delay: 0.1s;
+}
+.delay-3 {
+  animation-delay: 0.15s;
+}
+.delay-4 {
+  animation-delay: 0.2s;
+}
+.delay-5 {
+  animation-delay: 0.25s;
+}
+.delay-6 {
+  animation-delay: 0.3s;
+}
+
+/* Grid pattern */
+.grid-pattern {
+  background-image:
+    linear-gradient(var(--vb-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--vb-border) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-green {
+  background: linear-gradient(135deg, #22c55e 0%, #4ade80 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Glass card */
+.glass-card {
+  background: var(--vb-surface);
+  border: 1px solid var(--vb-border);
+  border-radius: 12px;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+.glass-card:hover {
+  border-color: var(--vb-border2);
+  box-shadow:
+    0 0 0 1px var(--vb-border2),
+    0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+/* Code block */
+.code-block {
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 13px;
+  background: var(--vb-surface2);
+  border: 1px solid var(--vb-border);
+  border-radius: 8px;
+  padding: 16px;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+/* Dot badge */
+.dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--vb-green);
+  animation: pulse-green 2s infinite;
+}
+.dot-amber {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--vb-amber);
+}
+.dot-gray {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--vb-text3);
 }
